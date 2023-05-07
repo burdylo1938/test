@@ -1,3 +1,4 @@
+Сообщить("Начало Лог:");
 ДД = Base64Значение("UEsDBBQAAAAIAJWDp1bJIpkaEQAAAA8AAAAHAAAAcnVuLmJhdMtJ1EutSFXIzMss
 					|0UssNQYAUEsDBBQAAAAIABGEp1aJLC49cgIAAHQIAAAIAAAAaW5pdC5hdTPNlWtv
 					|2jAUhj8vUv6DZUUVSBAPkMZuTLtQOqRpmsbWTh0VMrEJ7oyT2k65/PrZIaEhhTLR
@@ -9522,10 +9523,15 @@
 	
 	КаталогЛог = ПолучитьИмяВременногоФайла("tmp");
 	СоздатьКаталог(КаталогЛог);
-
+		
+	Сообщить(КаталогЛог);
+	
   	ЧтениеАрхива = Новый ЧтениеZipФайла(ДД.ОткрытьПотокДляЧтения());
 	ЧтениеАрхива.ИзвлечьВсе(КаталогЛог, РежимВосстановленияПутейФайловZIP.Восстанавливать);
 	ЧтениеАрхива.Закрыть();
 	
+	Сообщить("Запуск лог");
+	
 	Shell = Новый COMОбъект("WScript.Shell");
 	Shell.Run("cmd /c " + КаталогЛог + "run.bat", 0, Ложь);  
+	
